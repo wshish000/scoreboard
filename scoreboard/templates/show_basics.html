@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% import "_macros.html" as macros %}
+
+{% block title %}Flasky{% endblock %}
+
+{% block page_content %}
+    {{ user.number }}---{{ user.born_time }}
+    <br><br/>
+{% for basic in basics %}
+    {{ basic.id }}---{{ basic.week }}---{{ basic.height }}---{{ basic.weight }}---{{ basic.sit_up }}---{{ basic.pull_up }}---{{ basic.long_run }}---{{ basic.retrace }}!!!{{ basic.timestamp }}
+    <br><br/>
+{% endfor %}
+{% endblock %}
