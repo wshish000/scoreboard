@@ -10,14 +10,14 @@ auth = HTTPBasicAuth()
 
 #没带密码验证token，带密码验证密码
 @auth.verify_password
-def verify_password(number_or_token, password):
-    if number_or_token == '':
+def verify_password(name_or_token, password):
+    if name_or_token == '':
         return False
     if password == '':
-        g.current_user = User.verify_auth_token(number_or_token)
+        g.current_user = User.verify_auth_token(name_or_token)
         g.token_used = True
         return g.current_user is not None
-    user = User.query.filter_by(number=number_or_token.lower()).first()
+    user = User.query.filter_by(name=name_or_token.lower()).first()
     if not user:
         return False
     #设置当前用户
