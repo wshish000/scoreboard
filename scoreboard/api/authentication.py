@@ -1,4 +1,4 @@
-from flask import g, jsonify
+from flask import g, jsonify, current_app
 from flask_httpauth import HTTPBasicAuth
 from ..models import User
 from . import api
@@ -18,6 +18,8 @@ def verify_password(name_or_token, password):
         g.token_used = True
         return g.current_user is not None
     user = User.query.filter_by(name=name_or_token.lower()).first()
+    #logger的妙用
+    current_app.logger.warning(user)
     if not user:
         return False
     #设置当前用户

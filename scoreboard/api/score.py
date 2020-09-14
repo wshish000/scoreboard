@@ -36,11 +36,11 @@ def getAnalysis():
     pull_up = Basic.query.filter_by(week=week).order_by(Basic.pull_up.desc()).first().pull_up
     pull_up_name = Basic.query.filter_by(week=week).order_by(Basic.pull_up.desc()).first().name
 
-    retrace = Basic.query.filter_by(week=week).order_by(Basic.retrace.desc()).first().retrace
-    retrace_name = Basic.query.filter_by(week=week).order_by(Basic.retrace.desc()).first().name
+    retrace = Basic.query.filter_by(week=week).order_by(-Basic.retrace.desc()).first().retrace
+    retrace_name = Basic.query.filter_by(week=week).order_by(-Basic.retrace.desc()).first().name
 
-    tmp = Basic.query.filter_by(week=week).order_by(Basic.long_run.desc()).first().long_run
-    long_run_name = Basic.query.filter_by(week=week).order_by(Basic.long_run.desc()).first().name
+    tmp = Basic.query.filter_by(week=week).order_by(-Basic.long_run.desc()).first().long_run
+    long_run_name = Basic.query.filter_by(week=week).order_by(-Basic.long_run.desc()).first().name
 
     return {
         'code': 200,

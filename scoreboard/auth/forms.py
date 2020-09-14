@@ -31,5 +31,5 @@ class RegistrationForm(FlaskForm):
 class PasswordResetForm(FlaskForm):
     number = StringField('Number', validators=[DataRequired(), Length(1.64)])
     password = PasswordField('New Password', validators=[DataRequired(), EqualTo('password2', message='Passwords must match.')])
-    password2 = PasswordField('Confirm password', validators=[DataRequired])
+    password2 = PasswordField('Confirm password', validators=[DataRequired()])
     submit = SubmitField('Reset Password')
